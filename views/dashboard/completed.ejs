@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        input[type=text], select, textarea {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: vertical;
+        }
+        
+        label {
+          padding: 12px 12px 12px 0;
+          display: inline-block;
+          margin-left: 40px;
+        }
+        
+        .inlineButton {
+          background-color: #1b1d1b; /* Green */
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          margin-top: 30px;
+          margin-left: 25%;
+          width: 200px;
+        }
+        
+        input[type=submit] {
+          background-color: #232726;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          width: 300px;
+          margin-top: 50px;
+          margin-left: 20%;
+          
+          /* float: right;
+          align-items: center;
+          justify-content: center;
+          display: fl; */
+        }
+        
+        input[type=submit]:hover {
+          background-color: #45a049;
+        }
+        
+        .container1 {
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
+        }
+        
+        .col-25 {
+          float: left;
+          width: 25%;
+          margin-top: 6px;
+        }
+        
+        .col-75 {
+          float: left;
+          width: 60%;
+          margin-top: 6px;
+        }
+        
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+        
+        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+          .col-25, .col-75, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+          }
+        }
+        
+        
+        /* image */
+        .form-input {
+          width:350px;
+          padding:20px;
+          background:#fff;
+          /* box image */
+          border-radius: 4px;
+          border: 1px solid #ccc;
+        }
+        .form-input input {
+          display:none;
+        
+        }
+        .form-input label {
+          display:block;
+          /* width:45%; */
+          /* height:45px; */
+          margin-left: 25%;
+          line-height:20px;
+          text-align:center;
+          background:gray;
+        
+          color:#fff;
+          font-size:15px;
+          font-family:"Open Sans",sans-serif;
+          text-transform:Uppercase;
+          font-weight:600;
+          border-radius:1px;
+          cursor:pointer;
+        }
+        
+        .form-input img {
+          width:100%;
+          display:none;
+        
+          margin-bottom:30px;
+        }
+        
+        
+        /* button group */
+        
+        .btn-group button {
+          background-color: #04AA6D; /* Green background */
+          border: 1px solid green; /* Green border */
+          color: white; /* White text */
+          padding: 10px 24px; /* Some padding */
+          cursor: pointer; /* Pointer/hand icon */
+          float: left; /* Float the buttons side by side */
+        }
+        
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+        
+        .btn-group button:not(:last-child) {
+          border-right: none; /* Prevent double borders */
+        }
+        
+        /* Add a background color on hover */
+        .btn-group button:hover {
+          background-color: #3e8e41;
+        }
+        
+        /* dropdown button */
+        
+        .dropbtn {
+          background-color: #e6f3e6;
+          color: black;
+          padding: 10px;
+          font-size: 15px;
+         border-radius: 4px;
+          border: 1px solid #ccc;
+          cursor: pointer;
+        }
+        
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 105px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+        
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+        
+        .dropdown-content a:hover {background-color: #f1f1f1}
+        
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        
+        .dropdown:hover .dropbtn {
+          background-color: #3e8e41;
+        }
+        
+        #customers1 {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        #customers1 td, #customers th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        
+        #customers1 tr:nth-child(even){background-color: #f2f2f2;}
+        
+        #customers1 tr:hover {background-color: #ddd;}
+        
+        #customers1 th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #0000ff;
+          color: white;
+        
+        }
+
+
+
+        #customers2 {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        #customers2 td, #customers th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        
+        #customers2 tr:nth-child(even){background-color: #f2f2f2;}
+        
+        #customers2 tr:hover {background-color: #ddd;}
+        
+        #customers2 th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #0000ff;
+          color: white;
+        
+        }
+
+        /* table buttons -new 11.21*/
+        .buttontb {
+  background-color: #2777d9; /* Green */
+  color: white;
+  /*border: 1px solid #0000ff;  */
+  color: white;
+  padding: 1px 1px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  cursor: pointer;
+  width: 70px;
+  display: block;
+  border-radius:5px;
+}
+
+.buttontb:not(:last-child) {
+  border-bottom: none; /* Prevent double borders */
+}
+
+.buttontb:hover {
+  background-color: #0000ff;
+}
+</style>
+ 
+	<title>DSD Watch Center - Admin</title>
+</head> 
+<body>
+    <div class="container">
+        <div class="topbar">
+            <div class="logo">
+                <h2>Welcome - User</h2>
+
+            </div>
+
+            <div class="search">
+                <h2>DSD Watch Center-Admin Dashboard</h2>
+            </div>
+            <!-- <i class="fas fa-bell"></i> -->
+            <div class="serch">
+              <a class="button-logout"  href="/adminLogout" role="button"class="btn btn-primary btn-sm">LogOut</a>  
+              </div>
+        </div>
+            <div class="sidebar">
+              <ul>
+                <li>
+                    <a href="home" >
+                        <i class="fas fa-th-large"></i>
+                        <div>Home</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="addProduct">
+                        <i class="fas fa-th-large"></i>
+                        <div>Add Product</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="view">
+                        <i class="fas fa-th-large"></i>
+                        <div>View & Update Product</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="orders"class="active">
+                        <i class="fas fa-th-large"></i>
+                        <div>Orders</div>
+                    </a>
+                </li>
+                   
+              <li>
+                <a href="addCatogory">
+                    <i class="fas fa-th-large"></i>
+                    <div>Category</div>
+                </a>
+            </li>
+            <% if (role==1) { %>
+               
+              <%} else if (role==2)  { %>
+                <li>
+                  <a href="profile">
+                      <i class="fas fa-th-large"></i>
+                      <div>Admin profile</div>
+                  </a>
+              </li> 
+                 <li>
+                     <a href="transaction">
+                         <i class="fas fa-th-large"></i>
+                         <div>Reports</div>
+                     </a>
+                 </li>
+                 <li>
+                   <a href="analyzing">
+                       <i class="fas fa-th-large"></i>
+                       <div>Analyzing</div>
+                   </a>
+               </li>
+              <% } %> 
+              </div>
+            </ul>
+            </div>
+            <div class="main">
+             
+            <h1 style="text-align:center;font-family:Verdana;color:#0000ff;margin:50px;font-size:30px">Completed orders</h1>
+            <h4 style="margin:30px;margin-bottom:10px">Serch</h4>
+            <input style="margin:30px;margin-top:10px;width:120px" type="number" id="modelNo" onkeyup="myFunction1()" placeholder="Date">
+            <!-- <input style="margin:30px;margin-top:10px;width:120px" type="number" id="modelNo" onkeyup="myFunction3()" placeholder="Month"> -->
+                <table id="customers1" style="width: 95%;justify-content: center;margin-left: 10px;margin-top: 20px;">
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Sub ID</th>
+                    <th>Product  id</th>
+                    <th>name</th>
+                    <th>user </th>
+                    <th>Order Date</th>
+                    <th>Quantity</th>
+                    <th>Progress</th>
+                    <th>Customization</th>
+                    <th>Ring Color</th>
+                    <th>Belt Color</th>
+                    <th>Total</th>
+                  </tr>
+                 
+                  <% result.forEach(function(item) { %>
+                    <%if(item.status=='completed'){ %>
+                    <tr>
+                    <td><%=item.orderId%></td>
+                    <td><%=item.id%></td>
+                    <td><%=item.productID%></td>
+                    <td><%=item.name%></td>
+                    <td><%=item.username%></td>
+                    <td><%=item.date%></td>
+                    <td><%=item.quantity%></td>
+                    <td style="width:60px;"><%=item.status%></td>
+                    <td><%=item.custermize%></td>
+                    <td><%=item.ring_color%></td>
+                    <td><%=item.belt_color%></td>
+                    <td><%=(item.price*item.quantity)+(item.customizationCharges*item.quantity)%></td>
+                  </tr> 
+                  <% } %>                  
+                   <% })%>     
+                </table>
+
+
+
+                <h1 style="text-align:center;font-family:Verdana;color:#0000ff;margin:50px;font-size:30px">Canceled orders</h1>
+                <h4 style="margin:30px;margin-bottom:10px">Serch</h4>
+                <input style="margin:30px;margin-top:10px;width:120px" type="number" id="modelNo2" onkeyup="myFunction2()" placeholder="Date">
+                <table id="customers2" style="width: 95%;justify-content: center;margin-left: 10px;margin-top: 20px;">
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Sub ID</th>
+                    <th>Product  id</th>
+                    <th>name</th>
+                    <th>user </th>
+                    <th>Order Date</th>
+                    <th>Quantity</th>
+                    <th>Progress</th>
+                    <th>Customization</th>
+                    <th>Ring Color</th>
+                    <th>Belt Color</th>
+                    <th>Total</th>
+                  </tr>
+                 
+                  <% result.forEach(function(item) { %>
+                    <%if(item.status=='canceled'){ %>
+                    <tr>
+                    <td><%=item.orderId%></td>
+                    <td><%=item.id%></td>
+                    <td><%=item.productID%></td>
+                    <td><%=item.name%></td>
+                    <td><%=item.username%></td>
+                    <td><%=item.date%></td>
+                    <td><%=item.quantity%></td>
+                    <td style="width:60px;"><%=item.status%></td>
+                    <td><%=item.custermize%></td>
+                    <td><%=item.ring_color%></td>
+                    <td><%=item.belt_color%></td>
+                    <td><%=(item.price*item.quantity)+(item.customizationCharges*item.quantity)%></td>
+                  </tr> 
+                  <% } %>                  
+                   <% })%>     
+                </table>
+                <!-- <p id="demo1"></p>
+                <p id="demo2"></p>
+                <p id="demo3"></p>
+                <p id="demo4"></p> -->
+                <script>
+                var arr1 = [];
+                var arr2 = [];
+                var arr3 = [];
+                var arr4 = [];
+                  
+                "<% result.forEach(function(item) { %>" 
+                var x =   "<%=item.status%>";            
+               if (x =='pending') {
+                arr1.push("<%=item.id%>");
+               }
+              
+                if(x =='completed') {
+                arr2.push("<%=item.id%>");
+                  } 
+                 if(x =='process') {
+                    arr3.push("<%=item.id%>");
+                      }
+                 if(x =='Cancel') {
+                        arr4.push("<%=item.id%>");
+                          }
+               " <% })%>"
+
+                document.getElementById("demo1").innerHTML = arr1.length;
+                document.getElementById("demo3").innerHTML = arr3.length;
+                document.getElementById("demo4").innerHTML = arr4.length;
+                </script>
+                              
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"> </script>
+    <script src="chart1.js"></script>
+    <script src="chart2.js"></script>
+    <script src="chart3.js"></script>
+    <script src="chart4.js"></script>
+
+
+
+    <script>
+      function myFunction1() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("modelNo");
+        filter = input.value.toUpperCase();
+          table = document.getElementById("customers1");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[5];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+          
+        }
+      }
+      </script>
+
+      <script>
+        function myFunction2() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("modelNo2");
+          filter = input.value.toUpperCase();
+            table = document.getElementById("customers2");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[5];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+            
+          }
+        }
+        </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- javascripot order issue get errors -->

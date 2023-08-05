@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+	<title>DSD Watch Center - Admin</title>
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        
+        input[type=text],[type=number], select, textarea {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #1e90ff;
+          border-radius: 4px;
+          resize: vertical;
+        }
+        
+        label {
+          padding: 12px 12px 12px 0;
+          display: inline-block;
+          margin-left: 40px;
+        }
+        
+         input[type=submit] {
+          background-color: #232726;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-right: 60px;
+          margin-top: 50px;
+          width: 200px;       
+        }
+        
+        input[type=submit]:hover {
+          background-color: #45a049;
+        } 
+        
+        .container1 {
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          padding: 20px;
+        }
+        
+        .col-25 {
+          float: left;
+          width: 55%;
+          margin-top: 6px;
+          color: #040433;
+          font-weight:"bold";
+        }
+        
+        .col-75 {
+          float: left;
+          width: 20%;
+          margin-top: 6px;
+          color: #0000ff;
+        }
+        
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+        
+        /* Responsive layout -
+        when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+          .col-25, .col-75, input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+          }
+        }
+              
+        /* image */
+        .form-input {
+          width:350px;
+          padding:10px;
+          background:#ffffff;
+          /* box image */
+          border-radius: 4px;
+          border: 1px solid #1e90ff;   
+        }
+
+        .form-input input {
+          display:none;      
+        }
+
+        .form-input label {
+          display:block;
+          margin-left: 15%;
+          line-height:20px;
+          text-align:center;
+          background:#1e90ff;
+          border-radius: 4px;        
+          color:#fff;
+          font-size:15px;
+          font-family:"Open Sans",sans-serif;
+          text-transform:Uppercase;
+          font-weight:600;
+          border-radius:1px;
+          cursor:pointer;
+        }
+        
+        .form-input img {
+          width:100%;
+          display:none;    
+          margin-bottom:30px;
+        }
+                           
+        .dropdown {
+          position: relative;
+          display: inline-block;
+          width:180px;
+        }
+
+        .dropdownCol {
+          position: relative;
+          display: inline-block;
+          width:80px;
+        }
+
+        .textf {
+          position: relative;
+          display: inline-block;
+          width:75px;        
+        }
+        
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 105px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+               
+        </style>
+</head> 
+<body>
+ 
+
+    <div class="container">
+        <div class="topbar">
+            <div class="logo">
+                <h2>Welcome - User</h2>
+
+            </div>
+
+            <div class="search">
+                <h2>DSD Watch Center-Admin Dashboard</h2>
+            </div>
+            <!-- <i class="fas fa-bell"></i> -->
+            <div class="serch">
+              <a href="../adminLogout" class="button-logout">Logout</a>
+              </div>
+        </div>
+            <div class="sidebar">
+              <ul>
+                <li>
+                    <a href="../home" >
+                        <i class="fas fa-th-large"></i>
+                        <div>Home</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="../addProduct">
+                        <i class="fas fa-th-large"></i>
+                        <div>Add Product</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="../view">
+                        <i class="fas fa-th-large"></i>
+                        <div>View & Update Product</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="../orders"class="active">
+                        <i class="fas fa-th-large"></i>
+                        <div>Orders</div>
+                    </a>
+                </li>
+               
+                <li>
+                  <a href="../addCatogory">
+                      <i class="fas fa-th-large"></i>
+                      <div>Category</div>
+                  </a>
+              </li>
+
+          
+
+            <% if (role==1) { %>
+               
+              <%} else if (role==2)  { %>
+                <li>
+                  <a href="../profile">
+                      <i class="fas fa-th-large"></i>
+                      <div>Admin profile</div>
+                  </a>
+              </li>
+                 <li>
+                     <a href="../transaction">
+                         <i class="fas fa-th-large"></i>
+                         <div>Reports</div>
+                     </a>
+                 </li>
+                 <li>
+                   <a href="../analyzing">
+                       <i class="fas fa-th-large"></i>
+                       <div>Analyzing</div>
+                   </a>
+               </li>
+              <% } %> 
+              </div>
+          
+            </ul>
+            </div>
+
+
+            <div class="main">
+                <div class="container1">
+                    <div style="text-align:left;font-family:Verdana; color:#0000ff;font-size: 20px;"><h2 style="margin-top:20px; margin-left:30px">More Details</h2></div>
+                  <form action="/updateProduct"method="post" style="margin-top:20px ;"enctype="multipart/form-data">
+                    <input type="text" id="id" name="id" maxlength="12"value="<%= user.id %>" hidden>
+                    <div class="row">
+                      <div class="col-25">
+                        <label for="modelNo">First Name - <%= user.firstName %></label>
+                      </div>
+                      </div>
+                      <!-- <div class="row">
+                        <div class="col-25">
+                          <label for="modelNo">First Name - <%= user.firstName %></label>
+                        </div>
+                        </div> -->
+                        <div class="row">
+                          <div class="col-25">
+                            <label for="modelNo">Last Name - <%= user.lastName %></label>
+                          </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-25">
+                              <label for="modelNo">Email - <%= user.email %></label>
+                            </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-25">
+                                <label for="modelNo">Contact No 1 - <%= user.contactNumber1%></label>
+                              </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-25">
+                                  <label for="modelNo">Contact No 2 - <%= user.contactNumber2 %></label>
+                                </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-25">
+                                    <label for="modelNo">Adress - <%= user.adress %></label>
+                                  </div>
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-25">
+                                      <label for="modelNo">Username - <%= user.username %></label>
+                                    </div>
+                                    </div>
+                       
+                      <div class="row">
+                        <div class="col-25"> 
+                        </div>
+                        <div class="col-75">
+                     
+                      </div>      
+                   </div>
+               </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+                         
+ 

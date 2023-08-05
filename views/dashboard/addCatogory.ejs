@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/dashboard.css">
+
+     <!-- index_user -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ 
+	<title>DSD Watch Center - Admin</title>
+   
+</head> 
+<body>
+    <div class="containerx">
+        <div class="topbar">
+            <div class="logo">
+                <h2>Welcome - User</h2>
+
+            </div>
+
+            <div class="search">
+                <h3>DSD Watch Center-Admin Dashboard</h3>
+            </div>
+            <!-- <i class="fas fa-bell"></i> -->
+            <div class="serch">
+                <a class="button-logout"  href="/adminLogout" role="button"class="btn btn-primary btn-sm">LogOut</a>
+              </div>
+        </div>
+            <div class="sidebar">
+                <ul>
+                    <li>
+                        <a href="home" >
+                            <i class="fas fa-th-large"></i>
+                            <div>Home</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="addProduct">
+                            <i class="fas fa-th-large"></i>
+                            <div>Add Product</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="view">
+                            <i class="fas fa-th-large"></i>
+                            <div>View & Update Product</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="orders">
+                            <i class="fas fa-th-large"></i>
+                            <div>Orders</div>
+                        </a>
+                    </li>
+                   
+                    <li>
+                        <a href="addCatogory"class="active">
+                            <i class="fas fa-th-large"></i>
+                            <div>Category</div>
+                        </a>
+                     </li>
+
+                 
+
+                <% if (role==1) { %>
+                   
+                  <%} else if (role==2)  { %>
+                    <li>
+                        <a href="profile">
+                            <i class="fas fa-th-large"></i>
+                            <div>Admin profile</div>
+                        </a>
+                    </li>
+                     <li>
+                         <a href="transaction">
+                             <i class="fas fa-th-large"></i>
+                             <div>Reports</div>
+                         </a>
+                     </li>
+                     <li>
+                       <a href="analyzing">
+                           <i class="fas fa-th-large"></i>
+                           <div>Analyzing</div>
+                       </a>
+                   </li>
+                  <% } %> 
+                  </div>
+              
+                </ul>
+            </div>
+            <div class="main">
+                <div class="container1">
+
+                    <div class="box" style="text-align:center;font-family:Verdana; color:#0000ff;font-size: 30px;"><h2 style="margin:30px">Add Category</h2></div>
+                    <form action="/saveCatogory" method="post">
+                        <div style="border-color: black;border-style: solid;padding:20px;margin-bottom:20px">
+                      <div class="form-group" >
+                        <label for="name" style="color: blue;">Add Category form:</label><br>
+                        <label for="name" style="color: black;">Add Category Name</label>
+                        <input type="text" class="form-control"  maxlength="12" id="catogory" placeholder="Enter Category Name" name="catogory" required>
+                        <label for="name" style="color:black;">Add Category Description</label>
+                        <input type="text" class="form-control" id="description" placeholder="Enter Category Name" name="description" required>
+                      </div>
+                      <button type="submit" class="btn btn-primary" style="margin:10px ;">Submit</button>
+                    </form>
+                </div>
+                     <!-- <table class="table table-dark table-striped"> -->
+                      <table class="table table-hover">
+                        <thead class="thead-dark" >
+                        <tr>
+                          <th style="background-color: #0000ff;">Catogory Name</th>
+                          <th style="background-color: #0000ff;">Description</th>
+                          <!-- <th style="background-color: #0000ff;">Action</th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <% users.forEach(function(catogory){ %>
+                              <tr>
+                                  <td><%= catogory.catogory %></td>
+                                  <td><%= catogory.description %></td>
+                                  <!-- <td> 
+                                      <a href="deleteCatogory/<%= catogory.id %>" class="btn btn-sm btn-danger">Delete</a>
+                                  </td> -->
+                              </tr>
+                          <% }); %>
+                      </tbody>
+                    </table>
+      
+                </div>
+                
+                
+               
+            </div>
+    
+   
+</body>
+</html>

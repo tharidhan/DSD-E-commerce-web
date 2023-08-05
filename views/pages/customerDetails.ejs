@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        * {
+box-sizing: border-box;
+font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+font-size: 16px;
+}
+body {
+background-color: #435165;
+}
+.login {
+width: 600px;
+background-color: #ffffff;
+box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+margin: 100px auto;
+}
+.login h1 {
+text-align: center;
+color: #5b6574;
+font-size: 24px;
+padding: 20px 0 20px 0;
+border-bottom: 1px solid #dee0e4;
+}
+.login form {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+padding-top: 20px;
+}
+.login form label {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 200px;
+height: 50px;
+background-color: #3274d6;
+color: #ffffff;
+}
+.login form input[type="password"], .login form input[type="text"],.login form input[type="email"],.login form input[type="number"] {
+width: 310px;
+height: 50px;
+border: 1px solid #dee0e4;
+margin-bottom: 20px;
+padding: 0 15px;
+}
+.login form input[type="submit"] {
+width: 100%;
+padding: 15px;
+margin-top: 20px;
+background-color: #3274d6;
+border: 0;
+cursor: pointer;
+font-weight: bold;
+color: #ffffff;
+transition: background-color 0.2s;
+}
+.login form input[type="submit"]:hover {
+background-color: #2868c7;
+transition: background-color 0.2s;
+}
+    </style>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>DSD Watch Center</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="../images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+<!-- body -->
+
+<body class="main-layout">
+    <!-- <script>
+        alert("<%= user.firstName %>");
+    </script>
+    -->
+    <!-- loader  -->
+    <!-- <div class="loader_bg">
+        <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+    </div> -->
+    <!-- end loader -->
+    <!-- header -->
+
+<!-- massage -->
+<% if (rejistation_error) { %>
+    <script> alert("Your re-enter password is not matched. Please retype the password.");</script>
+     <%} else { %>
+     <% } %>
+
+ <!-- header -->
+ <header>
+    <!-- header inner -->
+    <div class="header">
+     
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                    <div class="full">
+                        <div class="center-desk">
+                            <div class="logo">
+                                <a href="index.html"><img src="../images/logo.png" alt="#"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                    <div class="menu-area">
+                        <div class="limit-box">
+                            <nav class="main-menu">
+                                <ul class="menu-area-main">
+                                    <li class="active"> <a href="/">Home</a> </li>
+                                         <!-- <li> <a href="/about">About</a> </li> -->
+                                    <li><a href="/brand">Shop Now</a></li>
+                                    <li><a href="/custermize">Customize</a></li>
+                                                        
+                         
+                                    <% if (session_username) { %>
+                                               
+                                    <a class="btn btn-danger" href="/cart" role="button" style="background-color: rgb(36, 35, 51);margin-left: 100px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                    </svg><span>  Cart</span></a>  
+                                    <a class="btn btn-danger" href="/customerDetails" role="button"style="background-color: rgb(36, 35, 51);margin-left: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                      </svg><span>   User</span></a>  
+                                        <a class="btn btn-danger" href="/custermerLogout" role="button"style="background-color:rgb(36, 35, 51);margin-left: 10px;">LogOut</a>  
+                                         <%} else { %>
+                                            <a class="btn btn-danger" href="/custermerLogin" role="button"style="background-color:rgb(36, 35, 51);margin-left: 10px;">LogIn</a>  
+                                         <% } %> 
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+    <!-- end header inner -->
+</header>
+    <!-- end header -->
+
+    <a class="btn btn-danger" href="/order" role="button"style="background-color:black;color:white;margin-left: 20px;margin-top:30px">See Your Order Summary</a>  
+
+<div class="login">
+    <h1>Your Details</h1>
+    <form action="/userEdit" method="post">
+        <input type="hidden" value="<%= user.userID  %>" name="id">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" placeholder="firstName" value="<%= user.firstName %>" id="firstName"maxlength="20" required>
+        <label for="lastName"> Last Name</label>
+        <input type="text" name="lastName" placeholder="LastName"value="<%= user.lastName%>" id="lastName"maxlength="20" required>
+        <label for="email"> Email</label>
+        <input type="email" name="email" placeholder="Email"value="<%= user.email %>" id="email" required>
+        <label for="contactNumber1"> Contact Number 1</label>
+        <input type="number" name="contactNumber1" placeholder="Contact Number 1"value="<%= user.contactNumber1 %>"maxlength="10" id="contactNumber1" required>
+        <label for="contactNumber2">Contact Number 2</label>
+        <input type="number" name="contactNumber2" placeholder="contact Number 2"value="<%= user.contactNumber2%>" maxlength="10"id="contactNumber2" required>
+        <label for="no">  Address </label>
+        <input type="text" name="adress" placeholder="No"value="<%= user.adress%>" id="adress" required>
+        <label for="username" >Username </label>
+        <input type="text" name="username" placeholder="Username"value="<%= user.username%>" id="username"maxlength="8" required>
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Password"value="<%= user.password%>" id="password"maxlength="8" required>
+        <label for="retypePassword">Retype Password</label>
+        <input type="password" name="retypePassword" placeholder="Retype Password" id="retypePassword" required>
+        <br><br>
+       
+        <input type="submit" value="Edit Your Details">
+    </form> 
+          <div class="text-center">
+          <a href="/"> or Go Back</a>                  
+          </div>
+   
+</div>
+<h5 style="text-align:center;margin-bottom:15px">Notice - User cannot be changed their username or email address</h5>
+    <!-- footer -->
+    <footer>
+        <div id="contact" class="footer">
+            <div class="container">
+                <div class="row pdn-top-30">
+                    <div class="col-md-12 ">
+                        <div class="footer-box">
+                            <div class="headinga">
+                                <h3>Address</h3>
+                                <span>51/9 SS plaza Bambalapitiya, Colombo.</span>
+                                <p>(+94)-70525181
+                                    <br>damithperera@gmail.com</p>
+                            </div>
+                            <ul class="location_icon">
+                                <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
+
+                            </ul>
+                            <div class="menu-bottom">
+                                <ul class="link">
+                                    <li> <a href="#">Home</a></li>
+                                    <li> <a href="#">About</a></li>
+                                    
+                                    <li> <a href="/adminlogin">Admin </a></li>
+                                    <li> <a href="#">Specials  </a></li>
+                                    <li> <a href="#"> Contact us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <p>DSD Watch Center<a href="#"></a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end footer -->
+    <!-- Javascript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- javascript -->
+    <script src="js/owl.carousel.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+   
+</body>
+
+</html>

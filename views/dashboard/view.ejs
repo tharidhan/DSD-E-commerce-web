@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/dashboard.css">
+  
+ 	<title>DSD Watch Center - Admin</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      
+      input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+      }
+      
+      label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+        margin-left: 40px;
+        color: #0000ff;
+      }
+      
+      input[type=submit] {
+          background-color: #232726;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-right: 60px;
+          margin-top: 50px;
+          width: 200px;     
+        }
+        
+        input[type=submit]:hover {
+          background-color: #45a049;
+        } 
+      
+      .container1 {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+      
+      .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+      }
+      
+      .col-75 {
+        float: left;
+        width: 60%;
+        margin-top: 6px;
+      }
+
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      @media screen and (max-width: 600px) {
+        .col-25, .col-75, input[type=submit] {
+          width: 100%;
+          margin-top: 0;
+        }
+      }
+      
+      .form-input {
+        width:350px;
+        padding:20px;
+        background:#fff;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+      .form-input input {
+        display:none;    
+      }
+      .form-input label {
+        display:block;
+        margin-left: 15%;
+        line-height:20px;
+        text-align:center;
+        background:gray;      
+        color:#fff;
+        font-size:15px;
+        font-family:"Open Sans",sans-serif;
+        text-transform:Uppercase;
+        font-weight:600;
+        border-radius:1px;
+        cursor:pointer;
+      }
+      
+      .form-input img {
+        width:100%;
+        display:none;
+      
+        margin-bottom:30px;
+      }
+
+      .btn-group button {
+        background-color: #04AA6D; 
+        border: 1px solid green; 
+        color: white; 
+        padding: 10px 24px; 
+        cursor: pointer; 
+        float: left; 
+      }
+      
+      .btn-group:after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+      
+      .btn-group button:not(:last-child) {
+        border-right: none; 
+      }
+      
+      .btn-group button:hover {
+        background-color: #3e8e41;
+      }
+
+      .dropbtn {
+        background-color: #b7ddec;
+        color: black;
+        padding: 10px;
+        font-size: 15px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+      }
+      
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 105px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      .dropdown-content a:hover {background-color: #f1f1f1}
+      
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      
+      .dropdown:hover .dropbtn {
+        background-color:  #89cff0;
+      }
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+          width:180px;
+        }
+
+        .dropdownCol {
+          position: relative;
+          display: inline-block;
+          width:80px;
+        }  
+        * {
+          box-sizing: border-box;
+        }
+        
+        #myInput {
+          background-image: url('/css/searchicon.png');
+          background-position: 10px 10px;
+          background-repeat: no-repeat;
+          width: 100%;
+          font-size: 16px;
+          padding: 12px 20px 12px 40px;
+          border: 1px solid #ddd;
+          margin-bottom: 12px;
+        }
+        
+        #customers {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        #customers td, #customers th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+        
+        #customers tr:hover {background-color: #ddd;}
+        
+        #customers th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #0000ff;
+          color: white;
+        
+        }
+      </style>
+</head> 
+<body>
+
+  <% if (sucsess) { %>
+    <script> alert("Data added successfully");</script>
+     <%} else { %>
+     <% } %> 
+     
+    <div class="container">
+        <div class="topbar">
+            <div class="logo">
+                <h2>Welcome - User</h2>
+            </div>
+
+            <div class="search">
+                <h2>DSD Watch Center-Admin Dashboard</h2>
+            </div>
+            <!-- <i class="fas fa-bell"></i> -->
+            <a class="button-logout"  href="/adminLogout" role="button"class="btn btn-primary btn-sm">LogOut</a>  
+        </div>
+            <div class="sidebar">
+              <ul>
+                <li>
+                    <a href="home" >
+                        <i class="fas fa-th-large"></i>
+                        <div>Home</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="addProduct">
+                        <i class="fas fa-th-large"></i>
+                        <div>Add Product</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="view"class="active">
+                        <i class="fas fa-th-large"></i>
+                        <div>View & Update Product</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="orders">
+                        <i class="fas fa-th-large"></i>
+                        <div>Orders</div>
+                    </a>
+                </li>
+                
+            
+
+              <li>
+                <a href="addCatogory">
+                    <i class="fas fa-th-large"></i>
+                    <div>Category</div>
+                </a>
+            </li>
+
+            <% if (role==1) { %>
+               
+              <%} else if (role==2)  { %>
+                <li>
+                  <a href="profile">
+                      <i class="fas fa-th-large"></i>
+                      <div>Admin profile</div>
+                  </a>
+              </li>
+                 <li>
+                     <a href="transaction">
+                         <i class="fas fa-th-large"></i>
+                         <div>Reports</div>
+                     </a>
+                 </li>
+                 <li>
+                   <a href="analyzing">
+                       <i class="fas fa-th-large"></i>
+                       <div>Analyzing</div>
+                   </a>
+               </li>
+              <% } %> 
+              </div>
+          
+            </ul>
+            </div>
+            <div class="main">
+              <div class="container1">
+
+                <div class="box" style="text-align:center;font-family:Verdana; color:#0000ff;font-size: 20px;"><h2 style="margin-top:20px; margin-left:30px">View & Edit Item</h2></div>
+                <form action="/action_page.php" style="margin-top:20px ;">
+                  <hr>
+                  <br>  <br>
+              
+                    <h3 style="margin-left: 40px;">Filter Using Categories </h3>
+                            
+                      
+                      <div class="row">
+                        <div class="col-25">
+                          <label for="uploadItemImage">Main catogory</label>
+                        </div>
+                        <div class="col-75">
+                          <!-- <p id="demow"></p>      -->
+
+                            <script>
+                              var arra = [];
+                              "<% result.forEach(function(item) { %>" 
+                              arra.push("<%=item.category%>");
+                             " <% })%>"
+                            
+                              function removeDuplicatess(arr) {
+                               return arr.filter((item, 
+                              index) => arra.indexOf(item) === index);
+                              }
+                              var ax = removeDuplicatess(arra);
+                              document.getElementById("demow").innerHTML = removeDuplicatess(arra);
+                               </script>
+                               
+
+                            <select class ="dropdown" id="category" name="category"   onchange="myFunction1()"></select>    
+                            <script type='text/javascript'>
+                            for(var d=0;d<=(ax.length-1);d++)
+                          {
+                          var option = "<option value='" + ax[d] + "'>" + ax[d] + "</option>"
+                          document.getElementById('category').innerHTML += option;
+                          }
+                          </script>
+                          </div>                       
+                      </div>
+
+                      <div class="row">
+                        <div class="col-25">
+                          <label for="uploadItemImage">Gender</label>
+                        </div>
+                        <div class="col-75">
+                          <select class ="dropdown "name="gender" id="gender" onchange="myFunction2()">
+                            <option value="#">Chooes Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Kids">Kids</option>
+                            <option value="none">None</option>                          
+                          </select>
+                        </div>
+                      </div>
+
+
+                </form>
+                <br> <br>
+                <hr>
+                <h3 style="margin:30px">Serch Model No </h3>
+
+                <input type="text" id="modelNo" onkeyup="myFunction3()" placeholder="Search ..">
+                <h3 style="margin:30px">Serch Product ID </h3>
+
+                <input type="text" id="productID" onkeyup="myFunction4()" placeholder="Search ..">
+                  <br> <br>
+                  <hr>
+    
+                <h1 style="text-align:left;color:#000000; margin: 40px;font-size: 20px;">View Summary</h1>
+                
+                <table id="customers" style="width: 95%;justify-content: center;margin-left: 10px;margin-top: 20px;";>
+                  <tr >
+                    <th>Product ID</th>
+                    <th>Category</th>
+                    <th>Gender</th>
+                    <th>Model No</th>
+                    <th>Brand Name</th>
+                    <th>Short Name</th>
+                    <th>Price</th>
+                    <th>Sale Price</th>
+                    <th>Quantity</th>
+                    <th>Customization</th>
+                    <th>Edit/Show More</th>
+                    <!-- <th>Delete</th> -->
+                  </tr>
+                
+                    <% result.forEach(function(item) { %>
+                      <tr>
+                      <td><%=item.id%></td>
+                      <td><%=item.category%></td>
+                      <td><%=item.gender%></td>
+                      <td><%=item.modelNo%></td>
+                      <td><%=item.brandName%></td>
+                      <td><%=item.shortName%></td>
+                      <td><%=item.old_price%></td>
+                      <td><%=item.new_price%></td>
+                      <td><%=item.quantity%></td>
+                      <td><%=item.color_customization%></td>
+                     
+                      <td><a class="buttontb" href="editProduct/<%= item.id %>"  role="button"style="background-color: blue;" >Edit</a></td>
+                      <!-- <td><a class="buttontb" href="deleteProduct/<%= item.id %>"  onclick = "return confirm('Are sure wants to delete?');" role="button"style="background-color: red;">Delete</a></td> -->
+                    </tr>                    
+                     <% })%>
+                 
+                 
+                </table>
+
+               </div>
+           </div>
+</body>
+</html>
+
+
+  <script>
+    function myFunction2() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("gender");
+      filter = input.value.toUpperCase();
+        table = document.getElementById("customers");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+
+    <script>
+      function myFunction1() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("category");
+        filter = input.value.toUpperCase();
+          table = document.getElementById("customers");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+      </script>
+      
+
+      <script>
+        function myFunction3() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("modelNo");
+          filter = input.value.toUpperCase();
+            table = document.getElementById("customers");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+            
+          }
+        }
+        </script>
+        
+
+        
+      <script>
+        function myFunction4() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("productID");
+          filter = input.value.toUpperCase();
+            table = document.getElementById("customers");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+            
+          }
+        }
+        </script>

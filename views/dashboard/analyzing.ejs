@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/dashboard.css">
+
+     <!-- CSS only -->
+     <style>
+
+        .button {
+          background-color: #0000ff;
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          border-radius: 8px;
+        }
+       
+       
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<title>DSD Watch Center - Admin</title>
+</head> 
+<body >
+    <div class="container" >
+        <div class="topbar">
+            <div class="logo">
+                <!--<h2>Flintec.</h2> -->
+                <h2>Welcome - User</h2>
+                
+                
+            </div>
+
+            <div class="search">
+                <h2>DSD Watch Center-Admin Dashboard</h2>
+            </div>
+            <!-- <i class="fas fa-bell"></i> -->
+            <div class="serch">
+              <a class="button-logout"  href="/adminLogout" role="button"class="btn btn-primary btn-sm">LogOut</a>
+            </div>
+        </div>
+            <div class="sidebar">
+              <ul>
+                <li>
+                    <a href="home" >
+                        <i class="fas fa-th-large"></i>
+                        <div>Home</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="addProduct">
+                        <i class="fas fa-th-large"></i>
+                        <div>Add Product</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="view">
+                        <i class="fas fa-th-large"></i>
+                        <div>View & Update Product</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="orders">
+                        <i class="fas fa-th-large"></i>
+                        <div>Orders</div>
+                    </a>
+                </li>
+               
+
+              <li>
+                <a href="addCatogory">
+                    <i class="fas fa-th-large"></i>
+                    <div>Category</div>
+                </a>
+            </li>
+
+            <% if (role==1) { %>
+               
+              <%} else if (role==2)  { %>
+                <li>
+                  <a href="profile">
+                      <i class="fas fa-th-large"></i>
+                      <div>Admin profile</div>
+                  </a>
+              </li>
+                 <li>
+                     <a href="transaction">
+                         <i class="fas fa-th-large"></i>
+                         <div>Reports</div>
+                     </a>
+                 </li>
+                 <li>
+                   <a href="analyzing"class="active">
+                       <i class="fas fa-th-large"></i>
+                       <div>Analyzing</div>
+                   </a>
+               </li>
+              <% } %> 
+              </div>
+          
+            </ul>
+            </div>
+
+
+            <div class="main" style="background-color:rgb(255, 255, 255);">
+                
+                <h3 style="text-align:center;font-family:Verdana; color:#0b055c;font-size: 30px;;padding: 30px;margin-top:30px">Check Your Financial Status - <span id="demoyear"></span></h3>
+                <canvas id="myChart1" style="width:100%;max-width:80%;margin-left: 10%;margin-top: 30px;height:360px" ></canvas>
+         
+                <div style=" display: inline-block;margin-left: 20%;margin-top: 40px;margin-bottom: 40px;">
+                  
+                </div>
+              
+            </div>
+          
+            <script>
+            const d = new Date();
+            let year = d.getFullYear();
+            document.getElementById("demoyear").innerHTML = year;
+            </script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"> </script>
+   
+
+                
+                <script>
+
+
+                  var arr1 = [];
+                  var arr2 = [];
+                  var arr3 = [];
+                  var arr4 = [];
+                  var arr5 = [];
+                  var arr6 = [];
+                  var arr7 = [];
+                  var arr8 = [];
+                  var arr9 = [];
+                  var arr10 = [];
+                  var arr11 = [];
+                  var arr12 = [];
+    
+                  var xz=0;
+                  var zz=0;
+            
+                  "<% result.forEach(function(item) { %>" 
+                   xz =   "<%=item.month%>";  
+                   zz =   "<%=item.sales%>";          
+                  if (xz =='1') {
+                  arr1.push("<%=item.sales%>");
+                  }
+                  if (xz =='2') {
+                    arr2.push("<%=item.sales%>");
+                    }
+                    if (xz =='3') {
+                      arr3.push("<%=item.sales%>");
+                      }
+                      if (xz =='4') {
+                        arr4.push("<%=item.sales%>");
+                        }
+                        if (xz =='5') {
+                          arr5.push("<%=item.sales%>");
+                          }
+                          if (xz =='6') {
+                            arr6.push("<%=item.sales%>");
+                            }
+                            if (xz =='7') {
+                              arr7.push("<%=item.sales%>");
+                              }
+                              if (xz =='8') {
+                                arr8.push("<%=item.sales%>");
+                                } if (xz =='9') {
+                                  arr9.push("<%=item.sales%>");
+                                  } if (xz =='10') {
+                                    arr10.push("<%=item.sales%>");
+                                    } if (xz =='11') {
+                                      arr11.push("<%=item.sales%>");
+                                      }
+                                      if (xz =='12') {
+                                        arr12.push("<%=item.sales%>");
+                                        }
+                  " <% })%>"
+
+
+
+
+                var xValues1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                var yValues1 = [arr1[0],arr2[0],arr3[0],arr4[0],arr5[0],arr6[0],arr7[0],arr8[0],arr9[0],arr10[0],arr11[0],arr12[0]];
+                var barColors1 = ["#0000FF", "#088F8F","#0096FF","#5F9EA0","#0047AB","#6495ED","#0000FF", "#088F8F","#0096FF","#5F9EA0","#0047AB","#6495ED", ];
+                
+                new Chart("myChart1", {
+                  type: "bar",
+                  data: {
+                    labels: xValues1,
+                    datasets: [{
+                      backgroundColor: barColors1,
+                      data: yValues1
+                    }]
+                  },
+                  options: {
+                    legend: {display: false},
+                    title: {
+                      display: true,
+                      text: "Summery of DSD watch center financial"
+                    }
+                  }
+                
+                  
+                });
+                
+             
+                </script>
+                
+                 
+             
+              </body>
+              </html>
